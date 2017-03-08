@@ -1,0 +1,65 @@
+body{
+        color:white;
+    font-family: 'Roboto Condensed', sans-serif;
+    }
+.demo-layout-transparent {
+  background: url('../images/bg.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+.demo-layout-transparent .mdl-layout__drawer{
+    background-color: #EEEEEE;
+    opacity:0.9;
+}
+.info-content{
+    background: rgba(215, 204, 200, 0.6);
+    border-radius:8px;
+    padding:20px;
+    margin-left:120px;
+    margin-top:60px;
+}
+.info-content>p{
+    font-size:14px;
+    color:#424242;
+    font-weight: 600;
+    margin-top:20px;
+    width:100%;   
+}
+.info-content>h3{
+    line-height: 20px;
+    font-size: 25px;
+}
+.info-content>.image-info{
+    background:url(../images/obrazek1.jpg);
+    max-width:100%;
+    height: 278px;
+}
+.menu_link:hover{
+    background:rgba(224, 224, 224, 0.61);
+}
+.login>h5{
+    line-height:5px;   
+}
+.login>form{
+    width:200px;
+}
+.login>form>button{
+    margin-top:15px;
+}
+#rejestracja{
+    margin-top:10px;
+    float:left;
+}
+.panel_usera{
+    height:750px;  
+}
+.panel_usera>table{
+    color:black;
+    width:600px;
+    height:750px;
+    margin:0px auto;
+}

@@ -4,7 +4,7 @@ class Page {
     protected $page;
     protected $phrase; 
     function __construct($page){
-        if($page == "panel_usera"){
+        if($page == "panel_usera" || $page == "search"){
             $this->user_panel_header();
             $this->view_page($page);
             $this->view_footer();

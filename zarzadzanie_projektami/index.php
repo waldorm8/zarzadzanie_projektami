@@ -1,19 +1,14 @@
 <?php
-require('header.php');
-if(isset($_GET['strona']) && $_GET['strona'] == 'login'){
-    require('login.php');
-}
-else if(isset($_GET['strona']) && $_GET['strona'] == 'kontakt'){
-    require('kontakt.php');
-}
-else if(isset($_GET['strona']) && $_GET['strona'] == 'szczegoly'){
-    require('szczegoly.php');
-}
-else if(isset($_GET['strona']) && $_GET['strona'] == 'panel_usera'){
-    require('panel_usera.php');
+require('class/strona.php');
+
+if(isset($_GET['strona'])){
+    $kind_of_page = $_GET['strona'];
 }
 else{
-    require('content.php');
+    $kind_of_page = null;
 }
+$page = new Page($kind_of_page);
 
-require('footer.php');
+if(isset($_GET['search'])){
+    $search_page = new Page("search");
+}

@@ -35,6 +35,9 @@ class Baza {
             
             $result->close();
         }
+        else{
+             echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+        }
     }
     
     
@@ -47,7 +50,7 @@ class Baza {
         $zapytanie = "INSERT INTO uzytkownicy(login, haslo, email) 
                         VALUES           ('".$protected_username."','".$hashed_pass."','".$protected_email."')";
         
-        if($this -> czy_uzytk_istnieje($email, $username) > 0){
+        if($this -> czy_uzytk_istnieje($email, $username) > 0){ 
             echo '<p class="bg-danger">Uzytkownik o nicku: ' . $username . ' i e-mailu: ' . $email . ' już istnieje</p>';
         }
         else{

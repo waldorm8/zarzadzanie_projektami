@@ -1,0 +1,30 @@
+body  {
+	background: #4d5e70;
+}
+
+#page-wrapper {
+	background: #eaebed;
+}
+
+.sidebar-search {
+	background: #4d5e70;
+}
+
+.fa-envelope, .fa-caret-down, .fa-bell {
+	color: #c2c2c2;
+}
+
+.fa-sign-out {
+	color: red;
+}
+
+.side_m
+{
+	background: #4d5e70;
+	border-color: red;
+}
+
+.side_h
+{
+	color: white;
+}

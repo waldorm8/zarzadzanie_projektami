@@ -1,5 +1,10 @@
-body  {
-	background: #4d5e70;
+body
+{
+	background: linear-gradient(to right, #4d5e70 250px, #eaebed 250px);
+}
+
+html, body {
+    height:100%;
 }
 
 #page-wrapper {

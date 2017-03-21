@@ -23,7 +23,7 @@
     require('classes/baza.php'); 
     $nowa_baza = new Baza();
     
-    if(isset($_GET['try_to_register']) == true){
+    if(isset($_POST['username']) == true){
         $nowa_baza -> zarejestruj_uzytkownika($_POST['username'], $_POST['email'], $_POST['password']);
     }
 ?>
@@ -63,7 +63,7 @@
                         <h3 class="panel-title">Rejstracja</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="register.php?try_to_register">
+                        <form role="form" method="post" action="register.php">
                             <fieldset>
                                 <fieldset>
                                 <div class="form-group">
@@ -78,8 +78,8 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Hasło ponownie" name="password_again" type="password" value="">
                                 </div>
-                                
-                                <a href="#" class="btn btn-lg btn-success btn-block">Zarejestruj się</a>
+                            
+                                    <input type="submit" value="Zarejestruj się" class="btn btn-lg btn-success btn-block" />
                             </fieldset>
                             </fieldset>
                         </form>

@@ -68,7 +68,7 @@
                         <form role="form" method="post" action="login.php">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="login" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Hasło" name="password" type="password" value="">
@@ -78,7 +78,7 @@
                                         <input name="remember" type="checkbox" value="Remember Me">Zapamiętaj mnie
                                     </label>
                                 </div>
-                                <a href="#" class="btn btn-lg btn-success btn-block">Zaloguj</a>
+                                <input type="submit" value="Zaloguj" class="btn btn-lg btn-success btn-block" />
                                 <a href="#" class="btn btn-lg btn-success btn-block" style="margin-top:50px;">Nie pamiętasz hasła?</a>
                                 <a href="#" class="btn btn-lg btn-success btn-block">Nie masz konta?</a>
                             </fieldset>

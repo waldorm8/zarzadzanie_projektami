@@ -1,0 +1,86 @@
+body
+{
+	background: linear-gradient(to right, #4d5e70 250px, #eaebed 250px);
+}
+
+html, body {
+    height:100%;
+}
+
+#page-wrapper {
+	background: #eaebed;
+}
+
+.sidebar-search {
+	background: #4d5e70;
+}
+
+#user_fa, #bell_fa, #envelope_fa, .fa-caret-down {
+	color: #c2c2c2;
+}
+
+#logout_fa {
+	color: red;
+}
+
+.side_m
+{
+	background: #4d5e70;
+	border-color: red;
+}
+
+.side_h
+{
+	color: white;
+}
+
+#main-navbar
+{
+	margin-bottom: 0; 
+	background: white; 
+	box-shadow: 0 0 2px; 
+	height:51px;
+}
+
+.navbar-brand
+{
+	background: #00bff3; 
+	height: 51px; 
+	width: 250px; 
+	text-align: center; 
+	color: white !important;
+}
+
+#side-menu
+{
+	margin-top:100px;
+}
+
+#menu_b
+{
+	background: #4d5e70;
+}
+
+.btn-primary, .btn-success
+{
+	background: #00bff3;
+	border-style: none;
+}
+
+.panel-heading
+{
+	background: #eaebed !important;
+	border-style:none;
+}
+
+.panel-title
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+#login_panel
+{
+	background: #eaebed; 
+	border-style:none;
+}

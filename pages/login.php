@@ -23,7 +23,7 @@
     require('classes/user.php');
     $logowanie = new User(); //obsluga logowania;
     if(isset($_POST['login'])){
-        $logowanie -> zaloguj_sie($_POST['login'], $_POST['password']);
+        $logowanie -> zaloguj_sie($_POST['login'], $_POST['password'], $_POST['login']);
     }
     if(isset($_GET['wylogowany'])){
         $logowanie -> wyloguj();      
@@ -68,7 +68,7 @@
                         <form role="form" method="post" action="login.php">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="login" type="text" autofocus>
+                                    <input class="form-control" placeholder="E-mail/Login" name="login" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Hasło" name="password" type="password" value="">

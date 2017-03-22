@@ -3,10 +3,7 @@ class Baza {
      protected $link;
     
     function __construct(){
-        $db_ip = "localhost";
-        $db_user = 'waldorm';
-        $db_password = 'waldorm123';
-        $db_name = 'IPZ';
+        require('daneDoBazy.php');
         $this->link = mysqli_connect($db_ip, $db_user, $db_password, $db_name);
         
         if(!$this->link){

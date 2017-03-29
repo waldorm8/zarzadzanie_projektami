@@ -3,3 +3,6 @@
 3. Tworzymy baze.
 4. Plikiem .sql importujemy strukture bazy do utworzonej wczesniej bazy.
 5. w pliku pages/classes/daneDoBazy.php edytujemy go i uzupełniamy pola wymagane dla bazy.
+
+
+Zeby dzialalo przywracanie hasla trzeba skonfigurowac server aby wyslal emaile.

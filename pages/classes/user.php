@@ -32,7 +32,6 @@ class User extends Baza {
     }
     
     function wyloguj(){
-        //$_SESSION['zalogowany'] = 0;
         session_unset();
     }
 
@@ -41,9 +40,13 @@ class User extends Baza {
 
         if(($login != null || $login != '') && ($email == null || $email == '')){
             $zapytanie = "SELECT email FROM uzytkownicy WHERE login = '".$login."';";
-            
+            $proper_email = '';
             if($result = $baza -> link -> query($zapytanie)){
                 if($result = num_rows == 1){
+                    while($wynik = $result -> fetch_assoc()){
+                        $proper_email = $wynik['email']; // wyciagniecie emaila z bazy zeby na niego wyslac emaila
+                    }
+
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila
                 }
                 else{

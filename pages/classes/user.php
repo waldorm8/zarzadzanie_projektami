@@ -38,16 +38,22 @@ class User extends Baza {
     function przypomnij($login, $email){
         $baza = new Baza();
 
-        if(($login != null || $login != '') && ($email == null || $email == '')){
+        if(($login != null || $login != '') && ($email == null || $email == '')){//jesli wpiszemy login
             $zapytanie = "SELECT email FROM uzytkownicy WHERE login = '".$login."';";
             $proper_email = '';
             if($result = $baza -> link -> query($zapytanie)){
-                if($result = num_rows == 1){
+                if($result -> num_rows == 1){
                     while($wynik = $result -> fetch_assoc()){
                         $proper_email = $wynik['email']; // wyciagniecie emaila z bazy zeby na niego wyslac emaila
                     }
-                    $chars_string = 'sh213123hj1k2j3h123h12k3h12k3jh123kjh123k';
+                    $chars_string = '321qwe45wq65';
                     $shuffled_string = str_shuffle($chars_string);
+                    $msg = "Witam, twoje tymczasowe haslo to: " . $shuffled_string;
+                    $headers = "From: waldorm8@gmail.com" . "\r\n";
+                    mail($proper_email, "Przypomnienie hasla", $msg, $headers);
+                    $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE login = '".$login."'";
+                    $baza -> link -> query($zapytanie);
+                    echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila
                 }
                 else{
@@ -55,11 +61,19 @@ class User extends Baza {
                 }
             }
         }
-        elseif(($email != null || $email != '') && ($login == null || $login == '')){
+        elseif(($email != null || $email != '') && ($login == null || $login == '')){//jesli wpiszemy email
             $zapytanie = "SELECT login FROM uzytkownicy WHERE email = '".$email."';";
 
             if($result = $baza -> link -> query($zapytanie)){
-                if($result = num_rows == 1){
+                if($result -> num_rows == 1){
+                    $chars_string = '321qwe45wq65';
+                    $shuffled_string = str_shuffle($chars_string);
+                    $msg = "Witam, twoje tymczasowe haslo to: " . $shuffled_string;
+                    $headers = "From: waldorm8@gmail.com" . "\r\n";
+                    mail($email, "Przypomnienie hasla", $msg, $headers);
+                    $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE email = '".$email."'";
+                    $baza -> link -> query($zapytanie);
+                    echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila 
                 }
                 else{

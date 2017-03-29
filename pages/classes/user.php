@@ -35,4 +35,34 @@ class User extends Baza {
         //$_SESSION['zalogowany'] = 0;
         session_unset();
     }
+
+    function przypomnij($login, $email){
+        $baza = new Baza();
+
+        if(($login != null || $login != '') && ($email == null || $email == '')){
+            $zapytanie = "SELECT email FROM uzytkownicy WHERE login = '".$login."';";
+            
+            if($result = $baza -> link -> query($zapytanie)){
+                if($result = num_rows == 1){
+                    //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila
+                }
+                else{
+                    echo '<p class="bg-warning">Nie ma takiego konta.</p>';
+                }
+            }
+        }
+        elseif(($email != null || $email != '') && ($login == null || $login == '')){
+            $zapytanie = "SELECT login FROM uzytkownicy WHERE email = '".$email."';";
+
+            if($result = $baza -> link -> query($zapytanie)){
+                if($result = num_rows == 1){
+                    //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila 
+                }
+                else{
+                    echo '<p class="bg-warning">Nie ma takiego konta.</p>';   
+                }
+            }
+        }
+
+    }
 }

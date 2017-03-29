@@ -79,7 +79,7 @@
                                     </label>
                                 </div>
                                 <input type="submit" value="Zaloguj" class="btn btn-lg btn-success btn-block" />
-                                <a href="#" class="btn btn-lg btn-success btn-block" style="margin-top:50px;">Nie pamiętasz hasła?</a>
+                                <a href="forget_password.php" class="btn btn-lg btn-success btn-block" style="margin-top:50px;">Nie pamiętasz hasła?</a>
                                 <a href="register.php" class="btn btn-lg btn-success btn-block">Nie masz konta?</a>
                             </fieldset>
                         </form>

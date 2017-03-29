@@ -46,7 +46,8 @@ class User extends Baza {
                     while($wynik = $result -> fetch_assoc()){
                         $proper_email = $wynik['email']; // wyciagniecie emaila z bazy zeby na niego wyslac emaila
                     }
-
+                    $chars_string = 'sh213123hj1k2j3h123h12k3h12k3jh123kjh123k';
+                    $shuffled_string = str_shuffle($chars_string);
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila
                 }
                 else{

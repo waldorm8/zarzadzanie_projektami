@@ -54,6 +54,7 @@ class User extends Baza {
                     $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE login = '".$login."'";
                     $baza -> link -> query($zapytanie);
                     echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
+                    $result -> close();
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila
                 }
                 else{
@@ -74,6 +75,7 @@ class User extends Baza {
                     $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE email = '".$email."'";
                     $baza -> link -> query($zapytanie);
                     echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
+                    $result -> close();
                     //generujemy tymczasowe haslo, zapisujemy je do bazy i wysylamy na emaila 
                 }
                 else{

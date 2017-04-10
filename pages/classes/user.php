@@ -4,7 +4,9 @@ require("baza.php");
 class User extends Baza {
     
     function __construct(){
-        session_start();
+        if(!isset($_SESSION['zalogowany'])){
+            session_start();
+        }
     }
     function zaloguj_sie($login, $password, $email){
         $baza = new Baza();
@@ -30,6 +32,11 @@ class User extends Baza {
              echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
         }
     }
+
+     function wyloguj(){
+        session_unset();
+    }
+
     function sprawdz_log(){
         if(!isset($_SESSION['zalogowany'])){
             return False;
@@ -39,10 +46,6 @@ class User extends Baza {
         }
     }
     
-    function wyloguj(){
-        session_unset();
-    }
-
     function przypomnij($login, $email){
         $baza = new Baza();
 
@@ -92,5 +95,27 @@ class User extends Baza {
             }
         }
 
+    }
+
+    function dodaj_projekt($nazwa, $opis){ //prototypowanie funkcjonalnosci dodawania projektow bo niema gotowej bazy
+        $baza = new Baza();
+
+        if($nazwa != null && $opis != null){
+            $zapytanie = "INSERT INTO projekty(nazwa, opis_projektu)
+                            VALUES('".$nazwa."', '".$opis."');";
+
+
+            $wynik = @$baza -> link -> query($zapytanie);
+
+            if($wynik === false){
+                echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+                $baza->link -> close();
+            }
+            else{
+                echo '<p class="bg-success">Projekt dodano.</p>';
+                $baza->link -> close();
+            }
+
+        }
     }
 }

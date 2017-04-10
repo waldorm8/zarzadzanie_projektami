@@ -30,6 +30,14 @@ class User extends Baza {
              echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
         }
     }
+    function sprawdz_log(){
+        if(!isset($_SESSION['zalogowany'])){
+            return False;
+        }
+        else{
+            return True;
+        }
+    }
     
     function wyloguj(){
         session_unset();

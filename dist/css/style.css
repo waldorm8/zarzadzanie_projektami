@@ -84,3 +84,18 @@ html, body {
 	background: #eaebed; 
 	border-style:none;
 }
+
+.panel-primary
+{
+	border-color: #00bff3;
+}
+
+.panel-primary .panel-heading
+{
+	background: #00bff3 !important;
+}
+
+.pull-left, .pull-right
+{
+	color: #00bff3;
+}

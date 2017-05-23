@@ -28,6 +28,9 @@
     if(isset($_GET['wylogowany'])){
         $logowanie -> wyloguj();      
     }
+    else if($logowanie -> sprawdz_log() == true){
+        echo '<meta http-equiv = "refresh" content="1; URL=zalogowany/index.php">';
+    }
 ?>
 
     <div id="wrapper">

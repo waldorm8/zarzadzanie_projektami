@@ -12,13 +12,14 @@ class User extends Baza {
         $baza = new Baza();
         $hashed_password = sha1($password);
         
-        $zapytanie = "SELECT login, password, email FROM users WHERE login = '".$login."' OR email = '".$email."' AND password = '".$hashed_password."';";
+        $zapytanie = "SELECT user_id, login, password, email FROM users WHERE login = '".$login."' OR email = '".$email."' AND password = '".$hashed_password."';";
         
         if($result = $baza -> link -> query($zapytanie)){
             if($result -> num_rows == 1){
                 $_SESSION['zalogowany'] = 1;
                 while($user = $result -> fetch_assoc()){
-                 $_SESSION['login'] = $user['login']; // z zapytania wyciagnac login;   
+                 $_SESSION['login'] = $user['login'];
+                 $_SESSION['id_usera'] = $user['user_id'];   
                 }
                 header('Location: zalogowany/index.php');
             }
@@ -97,12 +98,12 @@ class User extends Baza {
 
     }
 
-    function dodaj_projekt($nazwa, $opis){ //prototypowanie funkcjonalnosci dodawania projektow bo niema gotowej bazy
+    function dodaj_projekt($title, $description, $date_reg, $date_end, $id_usera){
         $baza = new Baza();
 
-        if($nazwa != null && $opis != null){
-            $zapytanie = "INSERT INTO projekty(nazwa, opis_projektu)
-                            VALUES('".$nazwa."', '".$opis."');";
+        if($title != null && $description != null){
+            $zapytanie = "INSERT INTO projects(title, description, date_reg, date_end, user_id)
+                            VALUES('".$title."', '".$description."', '".$date_reg."', '".$date_end."', '".$id_usera."');"; //id_usera niema AI
 
 
             $wynik = @$baza -> link -> query($zapytanie);
@@ -115,7 +116,41 @@ class User extends Baza {
                 echo '<p class="bg-success">Projekt dodano.</p>';
                 $baza->link -> close();
             }
+        }
+    }
 
+    function wyswielt_projekty($id_usera){
+        $baza = new Baza();
+
+        $zapytanie = "SELECT * FROM projects WHERE user_id = '".$id_usera."';";
+
+        $wynik = @$baza -> link -> query($zapytanie);
+
+        if($wynik === False){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            
+            $baza->link -> close();
+        }
+        else{
+            while($dane_projektu = $wynik -> fetch_assoc()){
+                echo "
+                    <a href=\"szczegoly2.html\">
+                <div class=\"col-lg-4\">
+                    <div class=\"panel panel-default\">
+                        <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">
+                           ".$dane_projektu['title']."
+                        </div>
+                        <div class=\"panel-body\">
+                            <p>".$dane_projektu['description']."</p>
+                        </div>
+                        <div class=\"panel-footer\" style=\"background:#00bff3; color:white;\">
+                            Użytkownik 1, Użytkownik 2, Użytkownik 3
+                        </div>
+                    </div>
+                </div>
+                </a>
+                ";
+            }
         }
     }
 }

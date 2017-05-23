@@ -24,11 +24,6 @@ $user = new User();
 
 if($user -> sprawdz_log() == True){
 
-    $today = date("y.m.d");
-
-    if(isset($_POST['utworz_projekt']) == True){
-        $user -> dodaj_projekt($_POST['name'], $_POST['description'],  $today, $_POST['data_end'], $_SESSION['id_usera']);
-    }
 ?>
     <div id="wrapper">
 
@@ -74,9 +69,6 @@ if($user -> sprawdz_log() == True){
                             <a href="#" class="side_h"><i class="fa fa-calendar"></i> Kalendarz</a>
                         </li>
                         <li class="side_m">
-                            <a href="szczegoly.php" class="side_h"><i class="fa fa-calendar"></i> Projekty</a>
-                        </li>
-                        <li class="side_m">
                             <a href="#" class="side_h"><i class="fa fa-user"></i> Profil użytkownika</a>
                         </li>
                         <li class="side_m">
@@ -86,7 +78,7 @@ if($user -> sprawdz_log() == True){
                             <a href="#" class="side_h"><i class="fa fa-cog"></i> Ustawienia aplikacji</a>
                         </li>
                         <li class="side_m">
-                            <a href="../login.php?wylogowany" class="side_h"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
+                            <a href="#" class="side_h"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
                         </li>
                     </ul>
                 </div>
@@ -94,39 +86,29 @@ if($user -> sprawdz_log() == True){
         </nav>
 
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default" id="new_quest" style="background: #eaebed; border-style:none;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Nowy projekt</h3>
+            <div class="row" style="margin-top:50px;">
+		        <?php
+                   $user -> wyswielt_projekty($_SESSION['id_usera']);
+                ?>
+				<!--<a href="szczegoly2.html">
+				<div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background:#00bff3 !important; color:white;">
+                            <?php $dane_projektu['title']; ?>
+                        </div>
+                        <div class="panel-body">
+                            <p><?php $dane_projektu['description']; ?></p>
+                        </div>
+                        <div class="panel-footer" style="background:#00bff3; color:white;">
+                            Użytkownik 1, Użytkownik 2, Użytkownik 3
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <form role="form" method="post" action="new.php">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Nazwa" name="name" type="text" autofocus>
-                                </div>
-								<div class="form-group">
-                                    <textarea class="form-control" name="description" placeholder="Krótki opis projektu"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Zespół" name="zespol" type="text" value="">
-                                </div>
-                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Data zakończenia" name="data_end" type="date">
-                                </div>
-                                
-                                <!--<input type="submit" value="Dodaj nowego członka zespołu" class="btn btn-lg btn-success btn-block" /> -->
-                                
-                                <!--<a href="#" class="btn btn-lg btn-success btn-block" style="margin-top: 70px;">Utwórz zadanie</a>-->
-                                <button name="utworz_projekt" type="submit" class="btn btn-lg btn-success btn-block">Utwórz projekt</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            </div>
+				</div>
+				</a>-->
+                <?php
+                    
+                ?>
+			</div>
         </div>
     </div>
 
@@ -137,7 +119,6 @@ if($user -> sprawdz_log() == True){
 </body>
 
 </html>
-
 <?php 
 }
 else{

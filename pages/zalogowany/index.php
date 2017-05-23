@@ -128,7 +128,7 @@ if($user -> sprawdz_log() == True){
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <a href="szczegoly.html">
+                <a href="szczegoly.php">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">

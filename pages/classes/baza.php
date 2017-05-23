@@ -4,7 +4,7 @@ class Baza {
     
     function __construct(){
         require('daneDoBazy.php');
-        $this->link = mysqli_connect($db_ip, $db_user, $db_password, $db_name);
+        $this->link = new mysqli($db_ip, $db_user, $db_password, $db_name);
         
         if(!$this->link){
             echo "Błąd: Nie można połączyć z bazą." . PHP_EOL;
@@ -12,7 +12,8 @@ class Baza {
             echo "Błąd: " . mysqli_connect_error() . PHP_EOL;
             exit;
         }
-       //echo "polaczono z baza";
+       
+       echo "polaczono z baza";
     }
     
     protected function protect($input){
@@ -21,11 +22,12 @@ class Baza {
         }
         $input = strip_tags($input);
         $input = htmlspecialchars($input);
-        return mysql_real_escape_string($input);
+        $input = $this->link->real_escape_string($input); 
+        return $input;
     }
     
     protected function czy_uzytk_istnieje($email, $username){
-        $zapytanie = "SELECT login, email FROM uzytkownicy WHERE login= '".$username."' AND email = '".$email."';";
+        $zapytanie = "SELECT login, email FROM users WHERE login= '".$username."' AND email = '".$email."';";
         
         if($result = $this -> link -> query($zapytanie)){
             return $result -> num_rows;
@@ -33,7 +35,7 @@ class Baza {
             $result->close();
         }
         else{
-             echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+             echo '<p class="bg-warning">Coś poszło nie tak!</p>';
         }
     }
     
@@ -44,14 +46,14 @@ class Baza {
         $protected_password = $this->protect($password);
         $hashed_pass = sha1($protected_password);
         
-        $zapytanie = "INSERT INTO uzytkownicy(login, haslo, email) 
+        $zapytanie = "INSERT INTO users(login, password, email) 
                         VALUES           ('".$protected_username."','".$hashed_pass."','".$protected_email."')";
         
         if($this -> czy_uzytk_istnieje($email, $username) > 0){ 
             echo '<p class="bg-danger">Uzytkownik o nicku: ' . $username . ' i e-mailu: ' . $email . ' już istnieje</p>';
         }
         else{
-            $wynik = @$this->link -> query($zapytanie);
+            $wynik = $this->link -> query($zapytanie);
         
             if($wynik === false){
                 echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';

@@ -12,7 +12,7 @@ class User extends Baza {
         $baza = new Baza();
         $hashed_password = sha1($password);
         
-        $zapytanie = "SELECT login, haslo, email FROM uzytkownicy WHERE login = '".$login."' OR email = '".$email."' AND haslo = '".$hashed_password."';";
+        $zapytanie = "SELECT login, password, email FROM users WHERE login = '".$login."' OR email = '".$email."' AND password = '".$hashed_password."';";
         
         if($result = $baza -> link -> query($zapytanie)){
             if($result -> num_rows == 1){
@@ -50,7 +50,7 @@ class User extends Baza {
         $baza = new Baza();
 
         if(($login != null || $login != '') && ($email == null || $email == '')){//jesli wpiszemy login
-            $zapytanie = "SELECT email FROM uzytkownicy WHERE login = '".$login."';";
+            $zapytanie = "SELECT email FROM users WHERE login = '".$login."';";
             $proper_email = '';
             if($result = $baza -> link -> query($zapytanie)){
                 if($result -> num_rows == 1){
@@ -62,7 +62,7 @@ class User extends Baza {
                     $msg = "Witam, twoje tymczasowe haslo to: " . $shuffled_string;
                     $headers = "From: waldorm8@gmail.com" . "\r\n";
                     mail($proper_email, "Przypomnienie hasla", $msg, $headers);
-                    $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE login = '".$login."'";
+                    $zapytanie = "UPDATE users SET password = '".sha1($shuffled_string)."' WHERE login = '".$login."'";
                     $baza -> link -> query($zapytanie);
                     echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
                     $result -> close();
@@ -74,7 +74,7 @@ class User extends Baza {
             }
         }
         elseif(($email != null || $email != '') && ($login == null || $login == '')){//jesli wpiszemy email
-            $zapytanie = "SELECT login FROM uzytkownicy WHERE email = '".$email."';";
+            $zapytanie = "SELECT login FROM users WHERE email = '".$email."';";
 
             if($result = $baza -> link -> query($zapytanie)){
                 if($result -> num_rows == 1){
@@ -83,7 +83,7 @@ class User extends Baza {
                     $msg = "Witam, twoje tymczasowe haslo to: " . $shuffled_string;
                     $headers = "From: waldorm8@gmail.com" . "\r\n";
                     mail($email, "Przypomnienie hasla", $msg, $headers);
-                    $zapytanie = "UPDATE uzytkownicy SET haslo = '".sha1($shuffled_string)."' WHERE email = '".$email."'";
+                    $zapytanie = "UPDATE users SET password = '".sha1($shuffled_string)."' WHERE email = '".$email."'";
                     $baza -> link -> query($zapytanie);
                     echo '<p class="bg-success">Wyslalismy do Ciebie emaila z tymczasowym haslem.</p>';
                     $result -> close();

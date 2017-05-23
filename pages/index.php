@@ -25,8 +25,11 @@
     if(isset($_POST['login'])){
         $logowanie -> zaloguj_sie($_POST['login'], $_POST['password'], $_POST['login']);
     }
-    if(isset($_GET['wylogowany'])){
+    else if(isset($_GET['wylogowany'])){
         $logowanie -> wyloguj();      
+    }
+    else if($logowanie -> sprawdz_log() == true){
+        echo '<meta http-equiv = "refresh" content="1; URL=zalogowany/index.php">';
     }
 ?>
 

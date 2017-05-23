@@ -10,15 +10,22 @@
     <meta name="author" content="">
 
     <title>Zarządzanie projektem informatycznym</title>
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="../dist/css/style.css" rel="stylesheet">
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../../dist/css/style.css" rel="stylesheet">
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
+<?php 
+require('../classes/user.php');
+$user = new User();
 
+if($user -> sprawdz_log() == True){
+
+
+?>
     <div id="wrapper">
 
          <nav id="main-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
@@ -29,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="login.php">ADMIN</a>
+                <a class="navbar-brand" href="../login.php">ADMIN</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -72,7 +79,7 @@
                             <a href="#" class="side_h"><i class="fa fa-cog"></i> Ustawienia aplikacji</a>
                         </li>
                         <li class="side_m">
-                            <a href="#" class="side_h"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
+                            <a href="../login.php?wylogowany" class="side_h"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
                         </li>
                     </ul>
                 </div>
@@ -80,73 +87,35 @@
         </nav>
 
         <div id="page-wrapper">
-            <div class="row" style="margin-top:50px;">
-				
-				<a href="szczegoly2.html">
-				<div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="background:#00bff3 !important; color:white;">
-                            Nazwa projektu
-                        </div>
-                        <div class="panel-body">
-                            <p>Krótki opis projektu.</p>
-                        </div>
-                        <div class="panel-footer" style="background:#00bff3; color:white;">
-                            Użytkownik 1, Użytkownik 2, Użytkownik 3
-                        </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default" id="new_quest" style="background: #eaebed; border-style:none;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Nowy projekt</h3>
                     </div>
-				</div>
-				</a>
-				
-				<a href="szczegoly2.html">
-				<div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="background:#00bff3 !important; color:white;">
-                            Nazwa projektu
-                        </div>
-                        <div class="panel-body">
-                            <p>Krótki opis projektu.</p>
-                        </div>
-                        <div class="panel-footer" style="background:#00bff3; color:white;">
-                            Użytkownik 1, Użytkownik 2, Użytkownik 3
-                        </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Nazwa" name="name" type="text" autofocus>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control" placeholder="Krótki opis projektu" name="name" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Zespół" name="zespol" type="text" value="">
+                                </div>
+                                
+                                <input type="submit" value="Dodaj nowego członka zespołu" class="btn btn-lg btn-success btn-block" />
+                                
+                                <a href="#" class="btn btn-lg btn-success btn-block" style="margin-top: 70px;">Utwórz zadanie</a>
+                            </fieldset>
+                        </form>
                     </div>
-				</div>
-				</a>
-				
-				<a href="szczegoly2.html">
-				<div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="background:#00bff3 !important; color:white;">
-                            Nazwa projektu
-                        </div>
-                        <div class="panel-body">
-                            <p>Krótki opis projektu.</p>
-                        </div>
-                        <div class="panel-footer" style="background:#00bff3; color:white;">
-                            Użytkownik 1, Użytkownik 2, Użytkownik 3
-                        </div>
-                    </div>
-				</div>
-				</a>
-				
-				<a href="szczegoly2.html">
-				<div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="background:#00bff3 !important; color:white;">
-                            Nazwa projektu
-                        </div>
-                        <div class="panel-body">
-                            <p>Krótki opis projektu.</p>
-                        </div>
-                        <div class="panel-footer" style="background:#00bff3; color:white;">
-                            Użytkownik 1, Użytkownik 2, Użytkownik 3
-                        </div>
-                    </div>
-				</div>
-				</a>
-				
-			</div>
+                </div>
+            </div>
+
+            </div>
         </div>
     </div>
 
@@ -157,3 +126,11 @@
 </body>
 
 </html>
+
+<?php 
+}
+else{
+    echo '<meta http-equiv = "refresh" content="1; URL=../login.php">';
+    echo '<p>TAK NIE WOLNO! NIE ZALOGOWALES SIE NIE MASZ DOSTEPU!</p>';
+}
+?>

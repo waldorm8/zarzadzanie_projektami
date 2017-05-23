@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ADMIN</a>
+                <a class="navbar-brand" href="login.php">ADMIN</a>
             </div>
 
             <div class="navbar-default sidebar" role="navigation">

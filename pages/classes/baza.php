@@ -13,7 +13,7 @@ class Baza {
             exit;
         }
        
-       echo "polaczono z baza";
+       //echo "polaczono z baza";
     }
     
     protected function protect($input){
@@ -53,7 +53,7 @@ class Baza {
             echo '<p class="bg-danger">Uzytkownik o nicku: ' . $username . ' i e-mailu: ' . $email . ' już istnieje</p>';
         }
         else{
-            $wynik = $this->link -> query($zapytanie);
+            $wynik = @$this->link -> query($zapytanie);
         
             if($wynik === false){
                 echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';

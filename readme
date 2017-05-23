@@ -1,5 +1,6 @@
+
 1. Ściągamy całe repozytorium.
-2. Wypakowujemy na server.
+2. Wypakowujemy na server. < --- Polecałbym php7
 3. Tworzymy baze.
 4. Plikiem .sql importujemy strukture bazy do utworzonej wczesniej bazy.
 5. w pliku pages/classes/daneDoBazy.php edytujemy go i uzupełniamy pola wymagane dla bazy.

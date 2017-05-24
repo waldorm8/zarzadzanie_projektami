@@ -1,0 +1,12 @@
+Options FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^index.html$ index.php [L]
+
+RewriteRule ^home$ index.php [L]
+RewriteRule ^logout$ index.php?wylogowany [L]
+RewriteRule ^main_menu$ index.php?page=main_menu [L]
+RewriteRule ^register$ index.php?page=register [L]
+RewriteRule ^forget_password$ index.php?page=forget_password [L]
+RewriteRule ^add_project$ index.php?page=add_project [L]
+RewriteRule ^project_details$ index.php?page=project_details [L]

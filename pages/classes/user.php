@@ -21,7 +21,7 @@ class User extends Baza {
                  $_SESSION['login'] = $user['login'];
                  $_SESSION['id_usera'] = $user['user_id'];   
                 }
-                header('Location: zalogowany/index.php');
+                header('Location: main_menu');
             }
             else{
                 echo '<p class="bg-warning">Nie poprawne dane!</p>';   

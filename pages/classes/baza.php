@@ -3,7 +3,7 @@ class Baza {
      protected $link;
     
     function __construct(){
-        require('daneDoBazy.php');
+        require('pages/classes/daneDoBazy.php');
         $this->link = new mysqli($db_ip, $db_user, $db_password, $db_name);
         
         if(!$this->link){

@@ -1,8 +1,7 @@
-
-        <div id="page-wrapper">
+<div id="page-wrapper">
             <div class="row" style="margin-top:50px;">
-				
-			<div class="col-lg-12">
+                
+            <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background:#00bff3 !important; color:white;">
                             Nazwa projektu
@@ -40,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-			</div>
+            </div>
 
             <div class="col-lg-12" style="width:102%; margin-left:-1%;">
                     <div class="panel panel-default">
@@ -76,6 +75,19 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-lg-12" style="margin-left: -2%;">
+                <div class="panel-body">
+                <p>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg">Dodaj nowy projekt</button></a>
+                    <a href="new_user.html"><button type="button" class="btn btn-primary btn-lg">Dodaj użytkownika do projektu</button></a>
+                    <a href="new_task.html"><button type="button" class="btn btn-primary btn-lg">Dodaj zadanie do projektu</button></a>
+                    <a href="delete_task.html"><button type="button" class="btn btn-primary btn-lg">Usuń zadanie z projektu</button></a>
+                    <a href="delete_user.html"><button type="button" class="btn btn-primary btn-lg">Usuń użytkownika z projektu</button></a>
+                    <a href="delete_project.html"><button type="button" class="btn btn-primary btn-lg">Usuń cały projekt</button></a>
+                </p>
+                </div>
                 </div>
 
         </div>

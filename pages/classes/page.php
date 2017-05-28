@@ -53,8 +53,11 @@ class Page{
 		else if($page == "add_project"){
 			require('pages/zalogowany/new.php');
 		}
-		else if($page == "project_details"){
+		else if($page == "projects"){
 			require('pages/zalogowany/szczegoly.php');
+		}
+		else if($page == "project_details"){
+			require('pages/zalogowany/szczegolowy_poglad.php');
 		}
 		else{
 			echo "strona nie istneije";

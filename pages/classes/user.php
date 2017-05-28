@@ -150,7 +150,7 @@ class User extends Baza {
         else{
             while($dane_projektu = $wynik -> fetch_assoc()){
                 echo "
-                    <a href=\"szczegoly2.html\">
+                <a href=\"project_details\">
                 <div class=\"col-lg-4\">
                     <div class=\"panel panel-default\">
                         <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">

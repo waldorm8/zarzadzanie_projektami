@@ -118,6 +118,22 @@ class User extends Baza {
             }
         }
     }
+    function usun_projekt($id_projektu){
+        $baza = new Baza();
+
+        $zapytanie = "DELETE FROM projects WHERE project_id = $id_projektu";
+
+        $wynik = @$baza -> link -> query($zapytanie);
+
+        if($wynik === false){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            $baza->link -> close();
+        }
+        else{
+            echo '<p class="bg-success">Projekt usunięto.</p>';
+            $baza->link -> close();
+        }
+    }
 
     function wyswielt_projekty($id_usera){
         $baza = new Baza();

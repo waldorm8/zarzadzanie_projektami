@@ -34,7 +34,7 @@ if($user -> sprawdz_log() == True){
 <?php 
 }
 else{
-	echo '<meta http-equiv = "refresh" content="1; URL=../login.php">';
+	echo '<meta http-equiv = "refresh" content="1; URL=home">';
     echo '<p>TAK NIE WOLNO! NIE ZALOGOWALES SIE NIE MASZ DOSTEPU!</p>';
 }
 ?>

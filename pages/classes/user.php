@@ -12,7 +12,7 @@ class User extends Baza {
         $baza = new Baza();
         $hashed_password = sha1($password);
         
-        $zapytanie = "SELECT user_id, login, password, email FROM users WHERE login = '".$login."' OR email = '".$email."' AND password = '".$hashed_password."';";
+        $zapytanie = "SELECT user_id, login, password, email FROM users WHERE (login = '".$login."' OR email = '".$email."') AND password = '".$hashed_password."';";
         
         if($result = $baza -> link -> query($zapytanie)){
             if($result -> num_rows == 1){

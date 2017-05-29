@@ -8,8 +8,8 @@
 require('pages/classes/user.php');
 $user = new User();
 
-if($user -> sprawdz_log() == True){
 
+if($user -> sprawdz_log() == True){
 ?>
         <div id="page-wrapper">
             <div class="row" style="margin-top:50px;">

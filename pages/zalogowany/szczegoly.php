@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    function pokaz_alert() {
+        alert("Czy na pewno chcesz usunąć cały projekt? Jest to nieodwracalna zmiana!");
+}
+</script>
 
 <?php 
 require('pages/classes/user.php');

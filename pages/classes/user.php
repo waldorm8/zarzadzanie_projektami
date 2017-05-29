@@ -130,7 +130,7 @@ class User extends Baza {
             $baza->link -> close();
         }
         else{
-            echo '<p class="bg-success">Projekt usunięto.</p>';
+            header('Location: projects');
             $baza->link -> close();
         }
     }
@@ -158,7 +158,8 @@ class User extends Baza {
                             <a href=\"#\" title=\"Dodaj użytkownika do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-plus-circle\" id=\"circle\"></i></button></a>
                             <a href=\"\" title=\"Dodaj zadanie do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-tasks\" id=\"tasks\"></i></button></a>
                             <a href=\"#\" title=\"Usuń użytkownika z projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
-                             <a href=\"#\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
+                             <a href=\"index.php?usunieto&id=".$dane_projektu['project_id']."\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
+                             <a href=\"#\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                         </div>
                         <div class=\"panel-body\">
                             <p>".$dane_projektu['description']."</p>

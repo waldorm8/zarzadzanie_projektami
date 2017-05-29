@@ -4,7 +4,7 @@ class Page{
 	protected $page;
 
 	function __construct($page){
-		if($page == "main_menu"){
+		if($page == 'main_menu' || $page == 'projects' || $page == 'project_details' || $page == 'add_project'){
 			$this->view_header_login();
 			$this->view_sidebar_login(); // inny sidebar bedzie
 			$this->view_content($page);

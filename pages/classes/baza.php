@@ -48,6 +48,7 @@ class Baza {
         
         $zapytanie = "INSERT INTO users(login, password, email) 
                         VALUES           ('".$protected_username."','".$hashed_pass."','".$protected_email."')";
+
         
         if($this -> czy_uzytk_istnieje($email, $username) > 0){ 
             echo '<p class="bg-danger">Uzytkownik o nicku: ' . $username . ' i e-mailu: ' . $email . ' już istnieje</p>';

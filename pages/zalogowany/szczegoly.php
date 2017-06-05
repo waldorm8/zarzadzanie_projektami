@@ -10,6 +10,7 @@ $user = new User();
 
 
 if($user -> sprawdz_log() == True){
+    echo $_SESSION['login'];
 ?>
         <div id="page-wrapper">
             <div class="row" style="margin-top:50px;">

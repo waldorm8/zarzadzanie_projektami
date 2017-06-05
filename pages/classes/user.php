@@ -98,15 +98,19 @@ class User extends Baza {
 
     }
 
-    function dodaj_projekt($title, $description, $date_reg, $date_end, $id_usera){
+    function dodaj_projekt($user_id, $title, $description, $date_reg, $date_end, $status, $priority){
         $baza = new Baza();
 
         if($title != null && $description != null){
-            $zapytanie = "INSERT INTO projects(title, description, date_reg, date_end, user_id)
-                            VALUES('".$title."', '".$description."', '".$date_reg."', '".$date_end."', '".$id_usera."');"; //id_usera niema AI
-
+            $zapytanie = "INSERT INTO project(project_title, project_description, project_status, project_start_date, project_end_date, project_priority)
+                            VALUES('".$title."', '".$description."', '".$status."', '".$date_reg."', '".$date_end."', ".$priority.");";
 
             $wynik = @$baza -> link -> query($zapytanie);
+
+            $zapytanie2 = "INSERT INTO allocation(user_id, project_id)
+                            VALUES(".$user_id.", ".$baza->link->insert_id.");";
+
+            $wynik2 = @$baza -> link -> query($zapytanie2);
 
             if($wynik === false){
                 echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
@@ -121,7 +125,7 @@ class User extends Baza {
     function usun_projekt($id_projektu){
         $baza = new Baza();
 
-        $zapytanie = "DELETE FROM projects WHERE project_id = $id_projektu";
+        $zapytanie = "DELETE FROM project p, allocation a WHERE a.project_id = $p.id_projektu AND p.project_id=".$id_projektu."";
 
         $wynik = @$baza -> link -> query($zapytanie);
 
@@ -138,13 +142,13 @@ class User extends Baza {
     function wyswielt_projekty($id_usera){
         $baza = new Baza();
 
-        $zapytanie = "SELECT * FROM projects WHERE user_id = '".$id_usera."';";
+        $zapytanie = "SELECT * FROM project p, allocation a 
+                    WHERE p.project_id=a.project_id AND a.user_id=".$id_usera.";";
 
         $wynik = @$baza -> link -> query($zapytanie);
 
         if($wynik === False){
             echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
-            
             $baza->link -> close();
         }
         else{
@@ -154,7 +158,7 @@ class User extends Baza {
                 <div class=\"col-lg-4\">
                     <div class=\"panel panel-default\">
                         <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">
-                           ".$dane_projektu['title']."
+                           ".$dane_projektu['project_title']."
                             <a href=\"#\" title=\"Dodaj użytkownika do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-plus-circle\" id=\"circle\"></i></button></a>
                             <a href=\"\" title=\"Dodaj zadanie do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-tasks\" id=\"tasks\"></i></button></a>
                             <a href=\"#\" title=\"Usuń użytkownika z projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
@@ -162,7 +166,7 @@ class User extends Baza {
                              <a href=\"#\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                         </div>
                         <div class=\"panel-body\">
-                            <p>".$dane_projektu['description']."</p>
+                            <p>".$dane_projektu['project_description']."</p>
                         </div>
                         <div class=\"panel-footer\" style=\"background:#00bff3; color:white;\">
                             Użytkownik 1, Użytkownik 2, Użytkownik 3

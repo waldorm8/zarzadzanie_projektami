@@ -37,7 +37,7 @@ class Page{
 	}
 
 	protected function view_content($page){
-		if($page == null || $page == "home"){
+		if($page == null || $page == "home" || $page == "login"){
 			require('pages/login.php'); // strona z logowaniem czyli strona glowna
 		}
 		else if($page == "main_menu"){

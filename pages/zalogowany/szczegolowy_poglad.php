@@ -80,12 +80,9 @@
                 <div class="col-lg-12" style="margin-left: -2%;">
                 <div class="panel-body">
                 <p>
-                    <a href="#"><button type="button" class="btn btn-primary btn-lg">Dodaj nowy projekt</button></a>
                     <a href="new_user.html"><button type="button" class="btn btn-primary btn-lg">Dodaj użytkownika do projektu</button></a>
-                    <a href="new_task.html"><button type="button" class="btn btn-primary btn-lg">Dodaj zadanie do projektu</button></a>
-                    <a href="delete_task.html"><button type="button" class="btn btn-primary btn-lg">Usuń zadanie z projektu</button></a>
                     <a href="delete_user.html"><button type="button" class="btn btn-primary btn-lg">Usuń użytkownika z projektu</button></a>
-                    <a href="delete_project.html"><button type="button" class="btn btn-primary btn-lg">Usuń cały projekt</button></a>
+                    <a href="index.php?usunieto&id=><button type="button" class="btn btn-primary btn-lg">Usuń cały projekt</button></a>
                 </p>
                 </div>
                 </div>

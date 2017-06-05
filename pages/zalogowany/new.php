@@ -8,11 +8,9 @@ if($user -> sprawdz_log() == True){
     $today = date("y.m.d");
 
     if(isset($_POST['utworz_projekt']) == True){
-        $user -> dodaj_projekt($_POST['name'], $_POST['description'],  $today, $_POST['data_end'], $_SESSION['id_usera']);
+        $user -> dodaj_projekt($_SESSION['id_usera'], $_POST['name'], $_POST['description'], $today, $_POST['data_end'], $_POST['status'], $_POST['priorytet']);
     }
 ?>
-    
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
@@ -30,9 +28,26 @@ if($user -> sprawdz_log() == True){
                                     <textarea class="form-control" name="description" placeholder="Krótki opis projektu"></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <select class="form-control" name="status">
+                                        <option value="active">Aktywny</option>
+                                        <option value="unactive">Nie aktywny</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    Priorytet
+                                    <select class="form-control" name="priorytet">
+                                    <?php 
+                                        for($i = 1 ; $i <= 10; $i++){
+                                            echo "<option value=\"".$i."\">".$i."</option>";
+                                        }
+                                    ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <input class="form-control" placeholder="Zespół" name="zespol" type="text" value="">
                                 </div>
                                  <div class="form-group">
+                                 Data zakończenia projektu
                                     <input class="form-control" placeholder="Data zakończenia" name="data_end" type="date">
                                 </div>
                                 

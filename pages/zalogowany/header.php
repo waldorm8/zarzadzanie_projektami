@@ -49,7 +49,8 @@
                         <i class="fa fa-user fa-fw" id="user_fa"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#" id="logout_fa"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
+                        <li>Witaj <?php $_SESSION['login']; ?></li>
+                        <li><a href="logout" id="logout_fa"><i class="fa fa-sign-out fa-fw"></i> Wyloguj</a>
                         </li>
                     </ul>
                 </li>

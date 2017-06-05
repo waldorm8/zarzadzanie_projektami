@@ -16,7 +16,7 @@
                         <h3 class="panel-title">Rejestracja</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="register.php">
+                        <form role="form" method="post" action="register">
                             <fieldset>
                                 <fieldset>
                                 <div class="form-group">

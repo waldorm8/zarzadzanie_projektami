@@ -125,10 +125,10 @@ class User extends Baza {
     function usun_projekt($id_projektu){
         $baza = new Baza();
 
-        $zapytanie = "DELETE FROM project p, allocation a WHERE a.project_id = $p.id_projektu AND p.project_id=".$id_projektu."";
-
+        $zapytanie = "DELETE FROM allocation WHERE project_id = ".$id_projektu.";";
+        $zapytanie2 = "DELETE FROM project WHERE project_id = ".$id_projektu.";";
         $wynik = @$baza -> link -> query($zapytanie);
-
+        $wynik = @$baza -> link -> query($zapytanie2);
         if($wynik === false){
             echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
             $baza->link -> close();

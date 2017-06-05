@@ -14,21 +14,21 @@ CREATE TABLE allocation (
 -- Table: project
 CREATE TABLE project (
     project_id int NOT NULL AUTO_INCREMENT,
-    project_title varchar(255) NOT NULL DEFAULT NULL,
-    project_status char NOT NULL DEFAULT NULL,
+    project_title varchar(255) NOT NULL,
+    project_status char NOT NULL,
     project_description text NOT NULL,
-    project_start_date date NOT NULL DEFAULT NULL,
-    project_end_date date NOT NULL DEFAULT NULL,
-    project_priority int NOT NULL DEFAULT NULL,
+    project_start_date date NOT NULL,
+    project_end_date date NOT NULL,
+    project_priority int NOT NULL,
     CONSTRAINT projects_pk PRIMARY KEY (project_id)
 ) ENGINE InnoDB CHARACTER SET utf8;
 
 -- Table: project_comment
 CREATE TABLE project_comment (
     project_comment_id int NOT NULL AUTO_INCREMENT,
-    project_id int NOT NULL DEFAULT NULL,
-    user_id int NOT NULL DEFAULT NULL,
-    project_comment_date date NOT NULL DEFAULT NULL,
+    project_id int NOT NULL,
+    user_id int NOT NULL,
+    project_comment_date date NOT NULL,
     project_comment text NOT NULL,
     CONSTRAINT comments_pk PRIMARY KEY (project_comment_id)
 ) ENGINE InnoDB CHARACTER SET utf8;
@@ -91,7 +91,7 @@ CREATE TABLE users (
     user_id int NOT NULL AUTO_INCREMENT,
     login varchar(15) NOT NULL,
     password varchar(255) NOT NULL,
-    email varchar(255) NOT NULL DEFAULT NULL,
+    email varchar(255) NOT NULL,
     CONSTRAINT users_pk PRIMARY KEY (user_id)
 ) ENGINE InnoDB CHARACTER SET utf8;
 

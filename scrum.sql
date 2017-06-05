@@ -4,16 +4,16 @@
 -- tables
 -- Table: allocation
 CREATE TABLE allocation (
-    allocation_id int NOT NULL AUTO_INCREMENT,
-    user_id int NOT NULL,
-    project_id int NOT NULL,
-    project_role_id int NOT NULL,
+    allocation_id int(11) NOT NULL AUTO_INCREMENT,
+    user_id int(11),
+    project_id int(11) ,
+    project_role_id int(11) ,
     CONSTRAINT allocation_pk PRIMARY KEY (allocation_id)
 );
 
 -- Table: project
 CREATE TABLE project (
-    project_id int NOT NULL AUTO_INCREMENT,
+    project_id int(11) NOT NULL AUTO_INCREMENT,
     project_title varchar(255) NOT NULL,
     project_status char NOT NULL,
     project_description text NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE project (
 -- Table: project_comment
 CREATE TABLE project_comment (
     project_comment_id int NOT NULL AUTO_INCREMENT,
-    project_id int NOT NULL,
-    user_id int NOT NULL,
+    project_id int(11),
+    user_id int(11),
     project_comment_date date NOT NULL,
     project_comment text NOT NULL,
     CONSTRAINT comments_pk PRIMARY KEY (project_comment_id)
@@ -35,15 +35,15 @@ CREATE TABLE project_comment (
 
 -- Table: project_role
 CREATE TABLE project_role (
-    project_role_id int NOT NULL AUTO_INCREMENT,
+    project_role_id int(11) NOT NULL AUTO_INCREMENT,
     project_role_name varchar(255) NOT NULL,
     CONSTRAINT project_role_pk PRIMARY KEY (project_role_id)
 );
 
 -- Table: sprint
 CREATE TABLE sprint (
-    sprint_id int NOT NULL AUTO_INCREMENT,
-    project_id int NOT NULL,
+    sprint_id int(11) NOT NULL AUTO_INCREMENT,
+    project_id int(11),
     sprint_title varchar(255) NOT NULL,
     sprint_status char NOT NULL,
     sprint_description text NOT NULL,
@@ -55,8 +55,8 @@ CREATE TABLE sprint (
 
 -- Table: sprint_comment
 CREATE TABLE sprint_comment (
-    sprint_comment_id int NOT NULL AUTO_INCREMENT,
-    user_id int NOT NULL,
+    sprint_comment_id int(11) NOT NULL AUTO_INCREMENT,
+    user_id int(11),
     sprint_id int NOT NULL,
     sprint_comment_date date NOT NULL,
     sprint_comment text NOT NULL,
@@ -65,8 +65,8 @@ CREATE TABLE sprint_comment (
 
 -- Table: task
 CREATE TABLE task (
-    task_id int NOT NULL AUTO_INCREMENT,
-    sprint_id int NOT NULL,
+    task_id int(11) NOT NULL AUTO_INCREMENT,
+    sprint_id int(11),
     task_title varchar(255) NOT NULL,
     task_status char NOT NULL,
     task_description text NOT NULL,
@@ -78,9 +78,9 @@ CREATE TABLE task (
 
 -- Table: task_comment
 CREATE TABLE task_comment (
-    task_comment_id int NOT NULL AUTO_INCREMENT,
-    user_id int NOT NULL,
-    task_id int NOT NULL,
+    task_comment_id int(11) NOT NULL AUTO_INCREMENT,
+    user_id int(11) ,
+    task_id int(11) ,
     task_comment_date date NOT NULL,
     task_comment text NOT NULL,
     CONSTRAINT task_comment_pk PRIMARY KEY (task_comment_id)
@@ -88,7 +88,7 @@ CREATE TABLE task_comment (
 
 -- Table: users
 CREATE TABLE users (
-    user_id int NOT NULL AUTO_INCREMENT,
+    user_id int(11) NOT NULL AUTO_INCREMENT,
     login varchar(15) NOT NULL,
     password varchar(255) NOT NULL,
     email varchar(255) NOT NULL,

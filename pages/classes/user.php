@@ -154,7 +154,7 @@ class User extends Baza {
         else{
             while($dane_projektu = $wynik -> fetch_assoc()){
                 echo "
-                <a href=\"project_details\">
+                <a href=\"index.php?project_id=".$dane_projektu['project_id']."\">
                 <div class=\"col-lg-4\">
                     <div class=\"panel panel-default\">
                         <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">
@@ -175,6 +175,30 @@ class User extends Baza {
                 </div>
                 </a>
                 ";
+            }
+        }
+    }
+
+    function wyswietl_uzytkownikow($id_projektu){
+        $baza = new Baza();
+
+        $zapytanie = "SELECT * FROM users u, allocation a 
+                        WHERE u.user_id=a.user_id AND a.project_id=".$id_projektu.";";
+
+        $wynik = @$baza -> link -> query($zapytanie);
+
+        if($wynik === False){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            $baza->link -> close();
+        }
+        else{
+            while($uzytkownicy = $wynik -> fetch_assoc()){
+                echo "<tr>
+                            <td>".$uzytkownicy['user_id']."</td>
+                            <td>".$uzytkownicy['login']."</td>
+                            <td>".$uzytkownicy['email']."</td>
+                    </tr>
+                    ";
             }
         }
     }

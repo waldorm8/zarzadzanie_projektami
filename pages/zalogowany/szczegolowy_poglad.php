@@ -1,3 +1,11 @@
+<?php
+require('pages/classes/user.php');
+$user = new User();
+if($user -> sprawdz_log() == True){
+
+?>
+
+
 <div id="page-wrapper">
             <div class="row" style="margin-top:50px;">
                 
@@ -18,21 +26,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>User 1</td>
-                                            <td>user1@wp.pl</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>User 2</td>
-                                            <td>user2@wp.pl</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>User 3</td>
-                                            <td>user3@wp.pl</td>
-                                        </tr>
+                                       <?php $user -> wyswietl_uzytkownikow($_GET['project_id']);?>
                                     </tbody>
                                 </table>
                             </div>
@@ -90,3 +84,9 @@
         </div>
     </div>
 
+<?php 
+}
+else{
+    header('Location: home');
+}
+?>

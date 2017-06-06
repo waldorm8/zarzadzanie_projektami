@@ -12,7 +12,7 @@ if($user -> sprawdz_log() == True){
             <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background:#00bff3 !important; color:white;">
-                            Nazwa projektu
+                            <?php echo "<h4>".$user -> get_project_title($_GET['project_id'])."</h4>" ?>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

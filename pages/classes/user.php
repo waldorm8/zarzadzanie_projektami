@@ -299,4 +299,23 @@ class User extends Baza {
             }
         }
     }
+    function dodaj_usera($id_projektu, $login){
+        $baza = new Baza();
+        $zapytanie = "SELECT user_id FROM users WHERE login='".$login."';";
+        $wynik = @$baza -> link -> query($zapytanie);
+        while($id_usera = $wynik -> fetch_assoc()){
+            $id = $id_usera['user_id'];
+        }
+        $zapytanie2 = "INSERT INTO allocation(user_id, project_id) VALUES(".$id.", ".$id_projektu.");";
+        $wynik2 = @$baza -> link -> query($zapytanie2);
+
+        if($wynik2 === False){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            $baza->link -> close();
+        }
+        else{
+             echo '<p class="bg-success">Dodano uzytkownika.</p>';
+            $baza -> link -> close();
+        }
+    }
 }

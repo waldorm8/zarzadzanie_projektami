@@ -4,7 +4,7 @@ class Page{
 	protected $page;
 
 	function __construct($page){
-		if($page == 'main_menu' || $page == 'projects' || $page == 'project_details' || $page == 'add_project' || $page == 'edition'){
+		if($page == 'main_menu' || $page == 'projects' || $page == 'project_details' || $page == 'add_project' || $page == 'edition' || $page == 'new_user'){
 			$this->view_header_login();
 			$this->view_sidebar_login(); // inny sidebar bedzie
 			$this->view_content($page);
@@ -55,6 +55,9 @@ class Page{
 		}
 		else if($page == "edition"){
 			require('pages/zalogowany/edycja.php');
+		}
+		else if($page == "new_user"){
+			require('pages/zalogowany/new_user.php');
 		}
 		else if($page == "projects"){
 			require('pages/zalogowany/szczegoly.php');

@@ -14,6 +14,9 @@ if(isset($_GET['usunieto'])){
 else if(isset($_GET['project_id'])){
 	$kindOfPage = "project_details";
 }
+else if(isset($_GET['edycja'])){
+	$kindOfPage = "edition";
+}
 else if(isset($_GET['page'])){
 	$kindOfPage = $_GET['page'];
 }

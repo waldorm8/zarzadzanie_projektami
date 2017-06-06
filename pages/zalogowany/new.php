@@ -44,9 +44,6 @@ if($user -> sprawdz_log() == True){
                                     ?>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Zespół" name="zespol" type="text" value="">
-                                </div>
                                  <div class="form-group">
                                  Data zakończenia projektu
                                     <input class="form-control" placeholder="Data zakończenia" name="data_end" type="date">

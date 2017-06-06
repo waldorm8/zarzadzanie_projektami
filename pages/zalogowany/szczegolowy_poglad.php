@@ -31,7 +31,16 @@ if($user -> sprawdz_log() == True){
                                 </table>
                             </div>
                         </div>
+
                     </div>
+                    <div class="col-lg-12" style="margin-left: -2%;">
+                <div class="panel-body">
+                <p>
+                     <a href=""><button type="button" class="btn btn-primary btn-lg btn-block" style="width: 104%;">Dodaj użytkownika</button></a>
+                    
+                </p>
+                </div>
+                </div>
                 </div>
             </div>
 

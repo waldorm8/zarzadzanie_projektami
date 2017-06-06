@@ -163,7 +163,7 @@ class User extends Baza {
                             <a href=\"\" title=\"Dodaj zadanie do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-tasks\" id=\"tasks\"></i></button></a>
                             <a href=\"#\" title=\"Usuń użytkownika z projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                              <a href=\"index.php?usunieto&id=".$dane_projektu['project_id']."\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
-                             <a href=\"#\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
+                             <a href=\"index.php?edycja&id=".$dane_projektu['project_id']."\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                         </div>
                         <div class=\"panel-body\">
                             <p>".$dane_projektu['project_description']."</p>
@@ -198,6 +198,68 @@ class User extends Baza {
                             <td>".$uzytkownicy['login']."</td>
                             <td>".$uzytkownicy['email']."</td>
                     </tr>
+                    ";
+            }
+        }
+    }
+
+    function edytuj_projekt($id_projektu){
+        $baza = new Baza();
+
+        $zapytanie = "SELECT * FROM project p, allocation a 
+                        WHERE p.project_id=a.project_id AND p.project_id=".$id_projektu.";";
+
+        $wynik = @$baza -> link -> query($zapytanie);
+
+        if($wynik === False){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            $baza->link -> close();
+        }
+        else{
+            while($projekt = $wynik -> fetch_assoc()){
+
+                if($projekt['project_status'] == "a"){
+                    $status_projektu = "Aktywny";
+                }
+                else if($projekt['project_status'] == "u"){
+                    $status_projektu = "Nie aktywny";
+                }
+                echo "
+                    <div class=\"form-group\">
+                            <input class=\"form-control\" value=\"".$projekt['project_title']."\" name=\"name\" type=\"text\" autofocus />
+                    </div>
+                    <div class=\"form-group\">
+                            <textarea class=\"form-control\" name=\"description\" \">".$projekt['project_description']."</textarea>
+                    </div>
+                    <div class=\"form-group\">
+                            Status projektu
+                            <select class=\"form-control\" name=\"status\">
+                                <option selected disabled>".$status_projektu."</option>
+                                <option value=\"active\">Aktywny</option>
+                                <option value=\"unactive\">Nie aktywny</option>
+                            </select>
+                    </div>";
+                echo "
+                    <div class=\"form-group\">
+                        Priorytet
+                        <select class=\"form-control\" name=\"priorytet\">
+                        <option selected disabled>".$projekt['project_priority']."</option>
+                    ";     
+                    for($i = 1 ; $i <= 10; $i++){
+                        echo "<option value=\"".$i."\">".$i."</option>";
+                    }
+                echo "
+                        </select>
+                    </div>
+                    ";               
+                echo "    
+                    <div class=\"form-group\">
+                        <input class=\"form-control\" placeholder=\"Zespół\" name=\"zespol\" type=\"text\" value=\"\">
+                    </div>
+                    <div class=\"form-group\">
+                        Data zakończenia projektu
+                        <input class=\"form-control\" value=\"".$projekt['project_end_date']."\" name=\"data_end\" type=\"date\">
+                    </div>
                     ";
             }
         }

@@ -5,7 +5,7 @@ $user = new User();
 
 if($user -> sprawdz_log() == True){
 
-    $today = date("y.m.d");
+    $today = date("Y.m.d");
 
     if(isset($_POST['utworz_projekt']) == True){
         $user -> dodaj_projekt($_SESSION['id_usera'], $_POST['name'], $_POST['description'], $today, $_POST['data_end'], $_POST['status'], $_POST['priorytet']);

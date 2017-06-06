@@ -104,8 +104,6 @@ class User extends Baza {
         if($title != null && $description != null && $date_end > $date_reg){
             $zapytanie = "INSERT INTO project(project_title, project_description, project_status, project_start_date, project_end_date, project_priority)
                             VALUES('".$title."', '".$description."', '".$status."', '".$date_reg."', '".$date_end."', ".$priority.");";
-            echo $date_end;
-            echo $date_reg;
 
             $wynik = @$baza -> link -> query($zapytanie);
 
@@ -124,7 +122,7 @@ class User extends Baza {
             }
         }
         else{
-            echo "Cos jest nie tak";
+            echo "<p class=\"bg-warning\">Nie prawidłowa data lub wymagane pola puste.</p>";
         }
     }
     function usun_projekt($id_projektu){

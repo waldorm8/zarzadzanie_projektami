@@ -216,6 +216,9 @@ class User extends Baza {
     function zapisz_zeedytowany_projekt($id_projektu){
         $baza = new Baza();
 
+        if(!isset($_POST['name']) || !isset($_POST['status']) || !isset($_POST['description']) || !isset($_POST['data_end']) || !isset($_POST['priorytety'])){
+            echo '<p class="bg-warning">Któreś z pól jest puste.</p>';
+        }
         $zapytanie = "UPDATE project
                         SET project_title = '".$_POST['name']."',
                         project_status = '".$_POST['status']."',
@@ -310,7 +313,7 @@ class User extends Baza {
         $czyIstniejeUser = "SELECT allocation_id 
                             FROM allocation
                             WHERE project_id = ".$id_projektu." AND user_id = ".$id.";";
-        $wynik3 = @$baza -> link -> query($zapytanie);
+        $wynik3 = @$baza -> link -> query($czyIstniejeUser);
 
         
 

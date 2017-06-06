@@ -139,12 +139,24 @@ class User extends Baza {
         }
     }
 
+    function get_project_title($id_projektu){
+        $baza = new Baza();
+
+        $zapytanie = "SELECT project_title FROM project WHERE project_id = ".$id_projektu.";";
+
+        $wynik = @$baza -> link -> query($zapytanie);
+        while($tytul = $wynik -> fetch_assoc()){
+            return $tytul['project_title'];
+        }
+    }
+
     function wyswielt_projekty($id_usera){
         $baza = new Baza();
 
         $zapytanie = "SELECT * FROM project p, allocation a 
                     WHERE p.project_id=a.project_id AND a.user_id=".$id_usera.";";
 
+           
         $wynik = @$baza -> link -> query($zapytanie);
 
         if($wynik === False){
@@ -167,9 +179,6 @@ class User extends Baza {
                         </div>
                         <div class=\"panel-body\">
                             <p>".$dane_projektu['project_description']."</p>
-                        </div>
-                        <div class=\"panel-footer\" style=\"background:#00bff3; color:white;\">
-                            Użytkownik 1, Użytkownik 2, Użytkownik 3
                         </div>
                     </div>
                 </div>

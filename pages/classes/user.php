@@ -219,7 +219,8 @@ class User extends Baza {
         if(!isset($_POST['name']) || !isset($_POST['status']) || !isset($_POST['description']) || !isset($_POST['data_end']) || !isset($_POST['priorytety'])){
             echo '<p class="bg-warning">Któreś z pól jest puste.</p>';
         }
-        $zapytanie = "UPDATE project
+        else{
+            $zapytanie = "UPDATE project
                         SET project_title = '".$_POST['name']."',
                         project_status = '".$_POST['status']."',
                         project_description = '".$_POST['description']."',
@@ -228,15 +229,16 @@ class User extends Baza {
                         WHERE project_id = ".$id_projektu.";";
 
       
-        $wynik = @$baza -> link -> query($zapytanie);
+            $wynik = @$baza -> link -> query($zapytanie);
 
-        if($wynik === False){
-            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
-            $baza->link -> close();
-        }
-        else{
-            echo '<p class="bg-success">Projekt zeedytowano.</p>';
-            $baza -> link -> close();
+            if($wynik === False){
+                echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+                $baza->link -> close();
+            }
+            else{
+                echo '<p class="bg-success">Projekt zeedytowano.</p>';
+                $baza -> link -> close();
+            }
         }
     }
 
@@ -244,7 +246,7 @@ class User extends Baza {
         $baza = new Baza();
 
         $zapytanie = "SELECT * FROM project p, allocation a 
-                        WHERE p.project_id=a.project_id AND p.project_id=".$id_projektu.";";
+                        WHERE p.project_id=a.project_id AND p.project_id=".$id_projektu." LIMIT 1;";
 
         $wynik = @$baza -> link -> query($zapytanie);
 

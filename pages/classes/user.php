@@ -175,8 +175,6 @@ class User extends Baza {
                         <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">
                            ".$dane_projektu['project_title']."
                             <a href=\"#\" title=\"Dodaj użytkownika do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-plus-circle\" id=\"circle\"></i></button></a>
-                            <a href=\"\" title=\"Dodaj zadanie do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-tasks\" id=\"tasks\"></i></button></a>
-                            <a href=\"#\" title=\"Usuń użytkownika z projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                              <a href=\"index.php?usunieto&id=".$dane_projektu['project_id']."\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
                              <a href=\"index.php?edycja&id=".$dane_projektu['project_id']."\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-pencil\" id=\"minus\"></i></button></a>
                         </div>

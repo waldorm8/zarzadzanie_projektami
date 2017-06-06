@@ -174,7 +174,7 @@ class User extends Baza {
                     <div class=\"panel panel-default\">
                         <div class=\"panel-heading\" style=\"background:#00bff3 !important; color:white;\">
                            ".$dane_projektu['project_title']."
-                            <a href=\"#\" title=\"Dodaj użytkownika do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-plus-circle\" id=\"circle\"></i></button></a>
+                            <a href=\"index.php?new_user&id_projektu=".$dane_projektu['project_id']."\" title=\"Dodaj użytkownika do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-plus-circle\" id=\"circle\"></i></button></a>
                              <a href=\"index.php?usunieto&id=".$dane_projektu['project_id']."\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
                              <a href=\"index.php?edycja&id=".$dane_projektu['project_id']."\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-pencil\" id=\"minus\"></i></button></a>
                         </div>
@@ -306,15 +306,29 @@ class User extends Baza {
         while($id_usera = $wynik -> fetch_assoc()){
             $id = $id_usera['user_id'];
         }
-        $zapytanie2 = "INSERT INTO allocation(user_id, project_id) VALUES(".$id.", ".$id_projektu.");";
-        $wynik2 = @$baza -> link -> query($zapytanie2);
 
-        if($wynik2 === False){
-            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
-            $baza->link -> close();
+        $czyIstniejeUser = "SELECT allocation_id 
+                            FROM allocation
+                            WHERE project_id = ".$id_projektu." AND user_id = ".$id.";";
+        $wynik3 = @$baza -> link -> query($zapytanie);
+
+        
+
+        if($wynik3 -> num_rows == 0){
+            $zapytanie2 = "INSERT INTO allocation(user_id, project_id) VALUES(".$id.", ".$id_projektu.");";
+            $wynik2 = @$baza -> link -> query($zapytanie2);
+
+            if($wynik2 === False){
+                echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+                $baza->link -> close();
+            }
+            else{
+                echo '<p class="bg-success">Dodano uzytkownika.</p>';
+                $baza -> link -> close();
+            }
         }
         else{
-             echo '<p class="bg-success">Dodano uzytkownika.</p>';
+            echo '<p class="bg-warning">Taki uzytkownik juz istnieje w tym projekcie</p>';
             $baza -> link -> close();
         }
     }

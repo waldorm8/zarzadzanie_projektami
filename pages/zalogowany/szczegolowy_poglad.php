@@ -77,6 +77,7 @@ if($user -> sprawdz_log() == True){
                     <a href="new_user.html"><button type="button" class="btn btn-primary btn-lg">Dodaj użytkownika do projektu</button></a>
                     <a href="delete_user.html"><button type="button" class="btn btn-primary btn-lg">Usuń użytkownika z projektu</button></a>
                     <a href="index.php?usunieto&id=><button type="button" class="btn btn-primary btn-lg">Usuń cały projekt</button></a>
+                    <a href=""><button type="button" class="btn btn-primary btn-lg">Edytuj projekt</button></a>
                 </p>
                 </div>
                 </div>

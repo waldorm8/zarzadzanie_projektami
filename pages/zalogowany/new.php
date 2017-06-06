@@ -29,13 +29,14 @@ if($user -> sprawdz_log() == True){
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="status">
+                                        <option selected disabled>Status projektu</option>
                                         <option value="active">Aktywny</option>
                                         <option value="unactive">Nie aktywny</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    Priorytet
                                     <select class="form-control" name="priorytet">
+                                    <option selected disabled>Priorytet projektu</option>
                                     <?php 
                                         for($i = 1 ; $i <= 10; $i++){
                                             echo "<option value=\"".$i."\">".$i."</option>";

@@ -178,7 +178,7 @@ class User extends Baza {
                             <a href=\"\" title=\"Dodaj zadanie do projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-tasks\" id=\"tasks\"></i></button></a>
                             <a href=\"#\" title=\"Usuń użytkownika z projektu\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                              <a href=\"index.php?usunieto&id=".$dane_projektu['project_id']."\" title=\"Usuń cały projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\" onclick=\"pokaz_alert()\"><i class=\"fa fa-trash\" id=\"trash\"></i></button></a>
-                             <a href=\"index.php?edycja&id=".$dane_projektu['project_id']."\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa fa-pencil\" id=\"minus\"></i></button></a>
+                             <a href=\"index.php?edycja&id=".$dane_projektu['project_id']."\" title=\"Edytuj projekt\"><button type=\"button\" class=\"btn btn-default btn-circle\"><i class=\"fa fa-minus\" id=\"minus\"></i></button></a>
                         </div>
                         <div class=\"panel-body\">
                             <p>".$dane_projektu['project_description']."</p>
@@ -212,6 +212,30 @@ class User extends Baza {
                     </tr>
                     ";
             }
+        }
+    }
+
+    function zapisz_zeedytowany_projekt($id_projektu){
+        $baza = new Baza();
+
+        $zapytanie = "UPDATE project
+                        SET project_title = '".$_POST['name']."',
+                        project_status = '".$_POST['status']."',
+                        project_description = '".$_POST['description']."',
+                        project_end_date = '".$_POST['data_end']."',
+                        project_priority = ".$_POST['priorytet']."
+                        WHERE project_id = ".$id_projektu.";";
+
+      
+        $wynik = @$baza -> link -> query($zapytanie);
+
+        if($wynik === False){
+            echo '<p class="bg-warning">Zapytanie nie zostało wykonane poprawnie!</p>';
+            $baza->link -> close();
+        }
+        else{
+            echo '<p class="bg-success">Projekt zeedytowano.</p>';
+            $baza -> link -> close();
         }
     }
 
@@ -273,6 +297,7 @@ class User extends Baza {
                         <input class=\"form-control\" value=\"".$projekt['project_end_date']."\" name=\"data_end\" type=\"date\">
                     </div>
                     ";
+
             }
         }
     }
